@@ -3,44 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102033">
+    <title>NovaCalc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
-
-
 <body>
-    <div class="calculator">
-    <h1>Calculator</h1>
-    <div id="display">0</div>
-    
-    <div class="buttons">
-    <button onclick="press(7)">7</button>
-    <button onclick="press(8)">8</button>
-    <button onclick="press(9)">9</button>
-    <button onclick="setOperator('/')">/</button>
+    <main class="app-shell">
+        <section class="calculator" aria-label="Calculator application">
+            <div class="calculator__glow" aria-hidden="true"></div>
 
-    <button onclick="press(4)">4</button>
-    <button onclick="press(5)">5</button>
-    <button onclick="press(6)">6</button>
-    <button onclick="setOperator('*')">x</button>
+            <header class="calculator__header">
+                <div>
+                    <p class="eyebrow">Smart Desktop Calculator</p>
+                    <h1>NovaCalc</h1>
+                    <p class="subtitle">Fast arithmetic with keyboard support, history, and utility actions.</p>
+                </div>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+                    <span class="theme-toggle__icon" aria-hidden="true">◐</span>
+                    <span class="theme-toggle__label">Theme</span>
+                </button>
+            </header>
 
-    
-    <button onclick="press(1)">1</button>
-    <button onclick="press(2)">2</button>
-    <button onclick="press(3)">3</button>
-    <button onclick="setOperator('-')">-</button>
+            <section class="display-panel" aria-live="polite">
+                <div class="display-meta">
+                    <span class="display-chip" id="modeLabel">Ready</span>
+                    <span class="display-expression" id="expression">0</span>
+                </div>
+                <div class="display-value" id="display">0</div>
+            </section>
 
-    <button onclick="press(0)">0</button>
-    <button onclick="calculate()">=</button>
-    <button onclick="clearAll()">C</button>
-    <button onclick="setOperator('+')">+</button>
-    </div>
+            <div class="calculator__content">
+                <section class="keypad-section" aria-label="Calculator controls">
+                    <div class="quick-actions">
+                        <button class="quick-action" type="button" id="copyResult">Copy result</button>
+                        <button class="quick-action" type="button" id="clearHistory">Clear history</button>
+                    </div>
 
-    <p id="result"></p>
+                    <div class="buttons">
+                        <button class="button button--utility" type="button" onclick="clearAll()">AC</button>
+                        <button class="button button--utility" type="button" onclick="backspace()">DEL</button>
+                        <button class="button button--utility" type="button" onclick="applyPercent()">%</button>
+                        <button class="button button--operator" type="button" onclick="setOperator('/')">/</button>
 
-    </div>
+                        <button class="button" type="button" onclick="press(7)">7</button>
+                        <button class="button" type="button" onclick="press(8)">8</button>
+                        <button class="button" type="button" onclick="press(9)">9</button>
+                        <button class="button button--operator" type="button" onclick="setOperator('*')">x</button>
+
+                        <button class="button" type="button" onclick="press(4)">4</button>
+                        <button class="button" type="button" onclick="press(5)">5</button>
+                        <button class="button" type="button" onclick="press(6)">6</button>
+                        <button class="button button--operator" type="button" onclick="setOperator('-')">-</button>
+
+                        <button class="button" type="button" onclick="press(1)">1</button>
+                        <button class="button" type="button" onclick="press(2)">2</button>
+                        <button class="button" type="button" onclick="press(3)">3</button>
+                        <button class="button button--operator" type="button" onclick="setOperator('+')">+</button>
+
+                        <button class="button button--utility" type="button" onclick="toggleSign()">+/-</button>
+                        <button class="button button--wide" type="button" onclick="press(0)">0</button>
+                        <button class="button" type="button" onclick="pressDecimal()">.</button>
+                        <button class="button button--accent" type="button" onclick="calculate()">=</button>
+                    </div>
+                </section>
+
+                <aside class="history-panel" aria-label="Calculation history">
+                    <div class="history-panel__header">
+                        <div>
+                            <p class="eyebrow">Session History</p>
+                            <h2>Recent calculations</h2>
+                        </div>
+                        <span class="history-count" id="historyCount">0 items</span>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <p class="history-empty">Your completed calculations will appear here.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
-    
 </body>
-
-</html>     
+</html>
