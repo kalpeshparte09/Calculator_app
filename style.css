@@ -293,10 +293,6 @@ h2 {
     font-weight: 700;
 }
 
-.button--wide {
-    grid-column: span 2;
-}
-
 .history-panel {
     display: flex;
     flex-direction: column;
